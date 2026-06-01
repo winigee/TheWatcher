@@ -42,6 +42,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
+          notes=$'Download **TheWatcher.zip**, unzip it, and double-click **TheWatcher.app**.\n\nFirst launch: because the app is not signed with an Apple Developer certificate, right-click the app and choose **Open** (or allow it under System Settings > Privacy & Security > Open Anyway).'
+          # Idempotent: create the release if it doesn't exist, otherwise just
+          # attach/replace the app asset on the existing release.
           gh release create "${GITHUB_REF_NAME}" build/TheWatcher.zip \
-            --title "TheWatcher ${GITHUB_REF_NAME}" \
-            --notes $'Download **TheWatcher.zip**, unzip it, and double-click **TheWatcher.app**.\n\nFirst launch: because the app is not signed with an Apple Developer certificate, right-click the app and choose **Open** (or allow it under System Settings > Privacy & Security > Open Anyway).'
+            --title "TheWatcher ${GITHUB_REF_NAME}" --notes "$notes" \
+          || gh release upload "${GITHUB_REF_NAME}" build/TheWatcher.zip --clobber
