@@ -48,19 +48,35 @@ reviewable in source control.
 
 ## Building
 
-Requires macOS 13+ and a recent Swift toolchain (Xcode 15+).
+Requires **macOS 13+** and the Swift toolchain. If you don't have Xcode, the
+Command Line Tools are enough:
+
+```bash
+xcode-select --install
+```
+
+### Make a double-clickable app (recommended)
+
+```bash
+./make_app.sh
+open build/TheWatcher.app
+```
+
+`make_app.sh` compiles in release mode, assembles `build/TheWatcher.app` with
+an `Info.plist`, and ad-hoc code-signs it so it runs locally.
+
+> First launch: because the app isn't signed with an Apple Developer
+> certificate, macOS Gatekeeper may block it. Either **right-click the app →
+> Open** (then confirm), or clear the quarantine flag:
+> `xattr -dr com.apple.quarantine build/TheWatcher.app`.
+
+### Develop from the command line
 
 ```bash
 swift build      # compile
 swift test       # run the rate-resolution unit tests
-swift run        # launch the app
+swift run        # launch the app directly
 ```
-
-> **Note:** to ship a proper double-clickable `.app` bundle (with an
-> `Info.plist`, app icon and code signing) open the package in Xcode and add a
-> macOS App target, or wrap the built executable in a bundle. The SPM
-> executable target above is intended for development and running from the
-> command line.
 
 ## Data model
 

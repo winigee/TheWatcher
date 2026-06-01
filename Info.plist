@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>TheWatcher</string>
+    <key>CFBundleDisplayName</key>
+    <string>TheWatcher</string>
+    <key>CFBundleExecutable</key>
+    <string>TheWatcher</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.winigee.thewatcher</string>
+    <key>CFBundleVersion</key>
+    <string>1.0</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>13.0</string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>NSPrincipalClass</key>
+    <string>NSApplication</string>
+    <!-- Show a normal app with a Dock icon and menu bar. -->
+    <key>LSUIElement</key>
+    <false/>
+</dict>
+</plist>
